@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "secrets1": {
+      "type": "secrets.user"
+    },
+    "mssql1": {
+      "type": "mssql.azure",
+      "connectionId": "connection",
+      "secretStore": "LocalSecretsFile"
+    }
+  }
+}
