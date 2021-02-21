@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31005.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Numenera", "Numenera.csproj", "{A7FF8886-79D6-4F6C-A781-6FC3CA52456E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A7FF8886-79D6-4F6C-A781-6FC3CA52456E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7FF8886-79D6-4F6C-A781-6FC3CA52456E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7FF8886-79D6-4F6C-A781-6FC3CA52456E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7FF8886-79D6-4F6C-A781-6FC3CA52456E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A8B3B0DC-9C30-463A-BC38-A3D835F90D17}
+	EndGlobalSection
+EndGlobal
