@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using LibraryData.DbData;
 using System.Web.Mvc;
 
 namespace Numenera.Controllers
@@ -10,7 +7,10 @@ namespace Numenera.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            using (libraryEntities library = new libraryEntities())
+            {
+                return View();
+            }
         }
     }
 }
