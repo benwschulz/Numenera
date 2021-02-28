@@ -1,7 +1,7 @@
 ﻿using LibraryData.DbData;
 using System.Web.Mvc;
 
-namespace Numenera.Controllers
+namespace Numenera
 {
     public class HomeController : Controller
     {
@@ -11,6 +11,11 @@ namespace Numenera.Controllers
             {
                 return View();
             }
+        }
+
+        public ActionResult CharacterScreen(int id)
+        {
+            return RedirectToAction("Index", "Character/Characters", new { id = id });
         }
     }
 }
