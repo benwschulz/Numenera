@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using LibraryData;
+using LibraryData.DbData;
+using System.Web.Mvc;
 
 namespace Numenera.Areas.Character
 {
@@ -7,7 +9,11 @@ namespace Numenera.Areas.Character
         // GET: Character/Characters
         public ActionResult Index(int id)
         {
-            return View();
+            using (libraryEntities db = new libraryEntities())
+            {
+                var model = new CharacterModel(id);
+                return View(model);
+            }
         }
     }
 }

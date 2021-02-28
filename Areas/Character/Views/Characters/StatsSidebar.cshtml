@@ -1,0 +1,129 @@
+﻿@model LibraryData.CharacterModel
+
+<div class="row">
+    <div class="col-md-12">
+        @*Might*@
+        <div class="row">
+            <div class="col-md-12"><h3 style="font-weight:bold;">Might</h3></div>
+        </div>
+        <div class="row statbox" style="padding-bottom:5px;">
+            <div class="col-md-4">
+                @Html.TextBoxFor(model => Model.characterData.MightCurrent, new { @class = "form-control", style = "font-size:25px;" })
+            </div>
+            <div class="col-md-1">
+                <span>/</span>
+            </div>
+            <div class="col-md-1">
+                <span>@Model.characterData.MightMax</span>
+            </div>
+            <div class="col-md-6">
+                <span style="font-weight:bold; font-size:25px;">Edge: </span>
+                <span style="font-size:25px;">@Model.characterData.MightEdge</span>
+            </div>
+        </div>
+        @*Might Skills*@
+        <div class="row">
+            <div class="col-md-12">
+                @if (Model.mightSkills.Count > 0)
+                {
+                    <ul class="list-group">
+                        @foreach (var skill in Model.mightSkills)
+                        {
+                            <li class="list-group-item">
+                                @skill.Name <span style="font-style:italic">(@skill.Level)</span>
+                            </li>
+                        }
+                    </ul>
+                }
+                else
+                {
+                    <span style="font-style:italic;">No skills</span>
+                }
+            </div>
+        </div>
+        <hr />
+
+        @*Speed*@
+        <div class="row">
+            <div class="col-md-12"><h3 style="font-weight:bold;">Speed</h3></div>
+        </div>
+        <div class="row statbox" style="padding-bottom:5px;">
+            <div class="col-md-4">
+                @Html.TextBoxFor(model => Model.characterData.SpeedCurrent, new { 
+                @class = "form-control", style = "font-size:25px;" })
+            </div>
+            <div class="col-md-1">
+                <span>/</span>
+            </div>
+            <div class="col-md-1">
+                <span>@Model.characterData.SpeedMax</span>
+            </div>
+            <div class="col-md-6">
+                <span style="font-weight:bold; font-size:25px;">Edge: </span>
+                <span style="font-size:25px;">@Model.characterData.SpeedEdge</span>
+            </div>
+        </div>
+        @*Speed Skills*@
+        <div class="row">
+            <div class="col-md-12">
+                @if (Model.speedSkills.Count > 0)
+                {
+                    <ul class="list-group">
+                        @foreach (var skill in Model.speedSkills)
+                        {
+                            <li class="list-group-item">
+                                @skill.Name <span style="font-style:italic">(@skill.Level)</span>
+                            </li>
+                        }
+                    </ul>
+                }
+                else
+                {
+                    <span style="font-style:italic;">No skills</span>
+                }
+            </div>
+        </div>
+        <hr />
+
+        @*Intellect*@
+        <div class="row">
+            <div class="col-md-12"><h3 style="font-weight:bold;">Intellect</h3></div>
+        </div>
+        <div class="row statbox" style="padding-bottom:5px;">
+            <div class="col-md-4">
+                @Html.TextBoxFor(model => Model.characterData.IntellectCurrent, new { @class = "form-control statbox", style = "font-size:25px;" })
+            </div>
+            <div class="col-md-1">
+                <span>/</span>
+            </div>
+            <div class="col-md-1">
+                <span>@Model.characterData.IntellectMax</span>
+            </div>
+            <div class="col-md-6">
+                <span style="font-weight:bold; font-size:25px;">Edge: </span>
+                <span style="font-size:25px;">@Model.characterData.IntellectEdge</span>
+            </div>
+        </div>
+        @*Intellect Skills*@
+        <div class="row">
+            <div class="col-md-12">
+                @if (Model.intellectSkills.Count > 0)
+                {
+                    <ul class="list-group">
+                        @foreach (var skill in Model.intellectSkills)
+                        {
+                            <li class="list-group-item">
+                                @skill.Name <span style="font-style:italic">(@skill.Level)</span>
+                            </li>
+                        }
+                    </ul>
+                }
+                else
+                {
+                    <span style="font-style:italic;">None</span>
+                }
+            </div>
+        </div>
+        <hr />
+    </div>
+</div>
