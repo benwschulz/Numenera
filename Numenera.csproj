@@ -372,7 +372,7 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LibraryData\LibraryData.csproj">
+    <ProjectReference Include="LibraryData\LibraryData.csproj">
       <Project>{0b48394e-134e-4f48-a06b-41eea1932fa5}</Project>
       <Name>LibraryData</Name>
     </ProjectReference>
