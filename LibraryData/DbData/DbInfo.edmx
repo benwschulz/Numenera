@@ -1,0 +1,342 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="LibraryData.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Abilities">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Type" Type="varchar" MaxLength="20" />
+          <Property Name="Effect" Type="varchar" MaxLength="700" />
+          <Property Name="Tier" Type="int" />
+          <Property Name="Cost" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Advancement">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CharacterID" Type="int" />
+          <Property Name="Tier" Type="int" />
+          <Property Name="Capabilities" Type="bit" />
+          <Property Name="Perfection" Type="bit" />
+          <Property Name="Effort" Type="bit" />
+          <Property Name="Skills" Type="bit" />
+          <Property Name="Other" Type="bit" />
+        </EntityType>
+        <EntityType Name="CharacterAbilities">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CharacterID" Type="int" />
+          <Property Name="AbilityID" Type="int" />
+          <Property Name="CharacterName" Type="varchar" MaxLength="50" />
+          <Property Name="AbilityName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Characters">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Descriptor" Type="varchar" MaxLength="30" />
+          <Property Name="Type" Type="varchar" MaxLength="20" />
+          <Property Name="Focus" Type="varchar" MaxLength="30" />
+          <Property Name="Tier" Type="int" />
+          <Property Name="Effort" Type="int" />
+          <Property Name="Experience" Type="int" />
+          <Property Name="Background" Type="varchar" MaxLength="500" />
+          <Property Name="MightMax" Type="int" />
+          <Property Name="SpeedMax" Type="int" />
+          <Property Name="IntellectMax" Type="int" />
+          <Property Name="MightEdge" Type="int" />
+          <Property Name="SpeedEdge" Type="int" />
+          <Property Name="IntellectEdge" Type="int" />
+          <Property Name="CypherLimit" Type="int" />
+          <Property Name="Armor" Type="int" />
+          <Property Name="MightCurrent" Type="int" />
+          <Property Name="SpeedCurrent" Type="int" />
+          <Property Name="IntellectCurrent" Type="int" />
+          <Property Name="Inabilities" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Cyphers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CharacterID" Type="int" />
+          <Property Name="Level" Type="int" />
+          <Property Name="Name" Type="varchar" MaxLength="30" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Inventory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CharacterID" Type="int" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Description" Type="varchar" MaxLength="200" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="Type" Type="varchar" MaxLength="20" />
+          <Property Name="Level" Type="int" />
+        </EntityType>
+        <EntityType Name="Skills">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CharacterID" Type="int" />
+          <Property Name="Type" Type="varchar" MaxLength="15" />
+          <Property Name="Level" Type="varchar" MaxLength="20" />
+          <Property Name="Name" Type="varchar" MaxLength="25" />
+        </EntityType>
+        <EntityContainer Name="LibraryDataStoreContainer">
+          <EntitySet Name="Abilities" EntityType="Self.Abilities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Advancement" EntityType="Self.Advancement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CharacterAbilities" EntityType="Self.CharacterAbilities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Characters" EntityType="Self.Characters" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cyphers" EntityType="Self.Cyphers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Inventory" EntityType="Self.Inventory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Skills" EntityType="Self.Skills" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LibraryData" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Advancement">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="CharacterID" Type="Int32" />
+          <Property Name="Tier" Type="Int32" />
+          <Property Name="Capabilities" Type="Boolean" />
+          <Property Name="Perfection" Type="Boolean" />
+          <Property Name="Effort" Type="Boolean" />
+          <Property Name="Skills" Type="Boolean" />
+          <Property Name="Other" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Character">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Descriptor" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Focus" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Tier" Type="Int32" />
+          <Property Name="Effort" Type="Int32" />
+          <Property Name="Experience" Type="Int32" />
+          <Property Name="Background" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="MightMax" Type="Int32" />
+          <Property Name="SpeedMax" Type="Int32" />
+          <Property Name="IntellectMax" Type="Int32" />
+          <Property Name="MightEdge" Type="Int32" />
+          <Property Name="SpeedEdge" Type="Int32" />
+          <Property Name="IntellectEdge" Type="Int32" />
+          <Property Name="CypherLimit" Type="Int32" />
+          <Property Name="Armor" Type="Int32" />
+          <Property Name="MightCurrent" Type="Int32" />
+          <Property Name="SpeedCurrent" Type="Int32" />
+          <Property Name="IntellectCurrent" Type="Int32" />
+          <Property Name="Inabilities" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Cypher">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="CharacterID" Type="Int32" />
+          <Property Name="Level" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="libraryEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Advancements" EntityType="Self.Advancement" />
+          <EntitySet Name="Characters" EntityType="Self.Character" />
+          <EntitySet Name="Cyphers" EntityType="Self.Cypher" />
+          <EntitySet Name="Inventories" EntityType="LibraryData.Inventory" />
+          <EntitySet Name="Skills" EntityType="LibraryData.Skill" />
+          <EntitySet Name="Abilities" EntityType="LibraryData.Ability" />
+          <EntitySet Name="CharacterAbilities" EntityType="LibraryData.CharacterAbility" />
+        </EntityContainer>
+        <EntityType Name="Inventory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CharacterID" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="Type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Level" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Skill">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CharacterID" Type="Int32" />
+          <Property Name="Type" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Level" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Ability">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Effect" Type="String" MaxLength="700" FixedLength="false" Unicode="false" />
+          <Property Name="Tier" Type="Int32" />
+          <Property Name="Cost" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CharacterAbility">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CharacterID" Type="Int32" />
+          <Property Name="AbilityID" Type="Int32" />
+          <Property Name="CharacterName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AbilityName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LibraryDataStoreContainer" CdmEntityContainer="libraryEntities">
+          <EntitySetMapping Name="Advancements">
+            <EntityTypeMapping TypeName="LibraryData.Advancement">
+              <MappingFragment StoreEntitySet="Advancement">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CharacterID" ColumnName="CharacterID" />
+                <ScalarProperty Name="Tier" ColumnName="Tier" />
+                <ScalarProperty Name="Capabilities" ColumnName="Capabilities" />
+                <ScalarProperty Name="Perfection" ColumnName="Perfection" />
+                <ScalarProperty Name="Effort" ColumnName="Effort" />
+                <ScalarProperty Name="Skills" ColumnName="Skills" />
+                <ScalarProperty Name="Other" ColumnName="Other" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Characters">
+            <EntityTypeMapping TypeName="LibraryData.Character">
+              <MappingFragment StoreEntitySet="Characters">
+                <ScalarProperty Name="Inabilities" ColumnName="Inabilities" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Descriptor" ColumnName="Descriptor" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Focus" ColumnName="Focus" />
+                <ScalarProperty Name="Tier" ColumnName="Tier" />
+                <ScalarProperty Name="Effort" ColumnName="Effort" />
+                <ScalarProperty Name="Experience" ColumnName="Experience" />
+                <ScalarProperty Name="Background" ColumnName="Background" />
+                <ScalarProperty Name="MightMax" ColumnName="MightMax" />
+                <ScalarProperty Name="SpeedMax" ColumnName="SpeedMax" />
+                <ScalarProperty Name="IntellectMax" ColumnName="IntellectMax" />
+                <ScalarProperty Name="MightEdge" ColumnName="MightEdge" />
+                <ScalarProperty Name="SpeedEdge" ColumnName="SpeedEdge" />
+                <ScalarProperty Name="IntellectEdge" ColumnName="IntellectEdge" />
+                <ScalarProperty Name="CypherLimit" ColumnName="CypherLimit" />
+                <ScalarProperty Name="Armor" ColumnName="Armor" />
+                <ScalarProperty Name="MightCurrent" ColumnName="MightCurrent" />
+                <ScalarProperty Name="SpeedCurrent" ColumnName="SpeedCurrent" />
+                <ScalarProperty Name="IntellectCurrent" ColumnName="IntellectCurrent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cyphers">
+            <EntityTypeMapping TypeName="LibraryData.Cypher">
+              <MappingFragment StoreEntitySet="Cyphers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CharacterID" ColumnName="CharacterID" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Inventories">
+            <EntityTypeMapping TypeName="LibraryData.Inventory">
+              <MappingFragment StoreEntitySet="Inventory">
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CharacterID" ColumnName="CharacterID" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Skills">
+            <EntityTypeMapping TypeName="LibraryData.Skill">
+              <MappingFragment StoreEntitySet="Skills">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="CharacterID" ColumnName="CharacterID" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Abilities">
+            <EntityTypeMapping TypeName="LibraryData.Ability">
+              <MappingFragment StoreEntitySet="Abilities">
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="Tier" ColumnName="Tier" />
+                <ScalarProperty Name="Effect" ColumnName="Effect" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CharacterAbilities">
+            <EntityTypeMapping TypeName="LibraryData.CharacterAbility">
+              <MappingFragment StoreEntitySet="CharacterAbilities">
+                <ScalarProperty Name="AbilityName" ColumnName="AbilityName" />
+                <ScalarProperty Name="CharacterName" ColumnName="CharacterName" />
+                <ScalarProperty Name="AbilityID" ColumnName="AbilityID" />
+                <ScalarProperty Name="CharacterID" ColumnName="CharacterID" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
