@@ -15,5 +15,11 @@ namespace Numenera.Areas.Character
                 return View(model);
             }
         }
+
+        [HttpPost]
+        public ActionResult Update(CharacterModel updateModel)
+        {
+            return RedirectToAction("Index");
+        }
     }
 }
